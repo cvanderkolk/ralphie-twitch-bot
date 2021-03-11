@@ -1,0 +1,33 @@
+{
+  "name": "zack-bot",
+  "version": "0.0.1",
+  "description": "this is a bot for twitch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "twitch"
+  ],
+  "author": "chris vanderkolk (christopher.n.vanderkolk@gmail.com)",
+  "license": "Unlicense",
+  "dependencies": {
+    "config": "^3.3.4",
+    "dotenv": "^8.2.0",
+    "form-data": "^3.0.1",
+    "node-fetch": "^2.6.1",
+    "twitch": "^4.5.0",
+    "twitch-auth": "^4.5.0",
+    "twitch-chat-client": "^4.5.0",
+    "twitch-eventsub": "^4.5.0",
+    "twitch-pubsub-client": "^4.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.22.0"
+  }
+}
