@@ -22,10 +22,21 @@ const soundClipMap = {
         soundUrl: 'https://gdurl.com/XMDO/download',
         imageUrl: 'https://i.pinimg.com/originals/77/c0/02/77c0028b38b7aa20391672260371d912.gif',
     },
-    'Bruh': '',
+    'How Dare You': {
+        soundUrl: 'https://gdurl.com/senT/download',
+        imageUrl: 'https://i.imgur.com/r75UZGW.gif?noredirect',
+    },
+    "I Can't Believe You've Done This": {
+        soundUrl: 'https://gdurl.com/BWJF/download',
+        imageUrl: 'https://thumbs.gfycat.com/HarmoniousEachEgg-small.gif',
+    },
     'Not Today Satan': {
         soundUrl: 'https://gdurl.com/DTKd/download',
         imageUrl: 'https://images.squarespace-cdn.com/content/v1/5e3ae820597c7c5ee13d77bf/1586334315884-80Z0TKTB6OPSRS7AGS6T/ke17ZwdGBToddI8pDm48kAI4xq1X9O62QpEWWz26IsVZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVF79dn-GXmv6G1Rqpzg9hme7yDMTHYtmNQQDOJBMZyks91lH3P2bFZvTItROhWrBJ0/not-today-satan.gif',
+    },
+    'Daddy Chill': {
+        soundUrl: 'https://gdurl.com/r6RI/download',
+        imageUrl: 'https://thumbs.gfycat.com/DampSimilarFrog-size_restricted.gif',
     },
 };
 
@@ -50,7 +61,7 @@ async function main() {
         new StaticAuthProvider(clientId, tokenData.accessToken),
         {
             clientSecret,
-            refreshToken: tokenData.refreshToken,
+            refreshToken: process.env.TWITCH_REFRESH_TOKEN,
             expiry: tokenData.expiryTimestamp === null ? null : new Date(tokenData.expiryTimestamp),
             onRefresh: async ({ accessToken, refreshToken, expiryDate }) => {
                 const newTokenData = {
@@ -89,6 +100,17 @@ async function main() {
 
     chatClient.onMessage((channel, user, message, msg) => {
         console.log(`${message}\nUser: ${user}, isMod: ${msg.userInfo.isMod}`);
+        if (message.includes('!gifboard') && msg.userInfo.isMod) {
+            try {
+                const gifName = message.split(' ')[1];
+                if (gifName in soundClipMap) {
+                    sendStreamlabsAlert(gifName);
+                }
+            }
+            catch (e) {
+                console.log(`Error when manually triggering gifboard:\n${e}`);
+            }
+        };
         if (message.includes('!luvralphie') && !msg.userInfo.isMod) {
             console.log(`Added ${user} to giveaway`)
             giveawayUsers.add(user);
@@ -97,7 +119,7 @@ async function main() {
             const giveawayName = message.split(' ')[2];
             chatClient.say(channel, `We are starting a giveaway for a ${giveawayCodeMap[giveawayName]}. To enter, type !luvralphie in chat.`)
         }
-        if (message == '!giveaway stop' && msg.userInfo.isMod) {
+        if (message === '!giveaway stop' && msg.userInfo.isMod) {
             // pick a random user from the giveaways
             console.log(`This is what the set looks like: ${giveawayUsers}`)
             const randomUser = getRandomItem(giveawayUsers);
