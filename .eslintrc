@@ -2,5 +2,13 @@
     "extends": [
         "airbnb",
         "prettier"
+    ],
+    "overrides": [
+        {
+            "files": ["*"],
+            "rules": {
+                "no-console": "off"
+            }
+        }
     ]
 }
