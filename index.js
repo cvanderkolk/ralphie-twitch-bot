@@ -102,7 +102,7 @@ async function main() {
         console.log(`${message}\nUser: ${user}, isMod: ${msg.userInfo.isMod}`);
         if (message.includes('!gifboard') && msg.userInfo.isMod) {
             try {
-                const gifName = message.split(' ')[1];
+                const gifName = message.split('!gifboard ')[1];
                 if (gifName in soundClipMap) {
                     sendStreamlabsAlert(gifName);
                 }
