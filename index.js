@@ -22,6 +22,14 @@ const soundClipMap = {
         soundUrl: 'https://gdurl.com/XMDO/download',
         imageUrl: 'https://i.pinimg.com/originals/77/c0/02/77c0028b38b7aa20391672260371d912.gif',
     },
+    'Gagatrondra': {
+        soundUrl: 'https://gdurl.com/96za/download',
+        imageUrl: 'https://media1.giphy.com/media/VFy9mDuUOTTQfWw39T/giphy.gif',
+    },
+    'Talented Brilliant': {
+        soundUrl: 'https://gdurl.com/Q7ZC/download',
+        imageUrl: 'https://i.gifer.com/1YZx.gif',
+    },
     'How Dare You': {
         soundUrl: 'https://gdurl.com/senT/download',
         imageUrl: 'https://i.imgur.com/r75UZGW.gif?noredirect',
@@ -99,7 +107,6 @@ async function main() {
     }
 
     chatClient.onMessage((channel, user, message, msg) => {
-        console.log(`${message}\nUser: ${user}, isMod: ${msg.userInfo.isMod}`);
         if (message.includes('!gifboard') && (msg.userInfo.isMod || msg.userInfo.isBroadcaster)) {
             try {
                 const gifName = message.split('!gifboard ')[1];
