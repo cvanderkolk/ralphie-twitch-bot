@@ -1,5 +1,6 @@
 // import { promises as fs } from 'fs';
 const fs = require('fs').promises;
+
 const config = require('config');
 
 const clientId = config.get('Twitch.clientId');
@@ -69,7 +70,7 @@ async function main() {
         new StaticAuthProvider(clientId, tokenData.accessToken),
         {
             clientSecret,
-            refreshToken: process.env.TWITCH_REFRESH_TOKEN,
+            refreshToken: process.env.TWITCH_REFRESH_TOKEN || tokenData.refresh_token,
             expiry: tokenData.expiryTimestamp === null ? null : new Date(tokenData.expiryTimestamp),
             onRefresh: async ({ accessToken, refreshToken, expiryDate }) => {
                 const newTokenData = {
@@ -88,7 +89,7 @@ async function main() {
     const userId = await pubSubClient.registerUserListener(apiClient);
 
 
-    const listener = await pubSubClient.onRedemption(userId, redemption => {
+    await pubSubClient.onRedemption(userId, redemption => {
         const { rewardName } = redemption;
         if (rewardName in soundClipMap) {
             console.log('triggering an alert with streamlabs');
