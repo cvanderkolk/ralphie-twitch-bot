@@ -10,9 +10,9 @@ Hi 👋 This is a nodeJS bot for my husband [Ralph's Twitch channel](https://www
 - Allow mods in the channel to trigger the same gifs/sounds manually with `!gifboard` (e.g. `!gifboard Gagatrondra`)
 - Power simple giveaways in chat
 
-## Couldn't you have used another tool?
+## Couldn't you use another tool?
 
-Sure, but this is more fun. One of these days I'll check out [Moobot](https://moo.bot/) or something.
+Sure, but this is more fun 😁 One of these days I'll check out [Moobot](https://moo.bot/) or something.
 
 ## Can I use it?
 
@@ -35,7 +35,7 @@ Twitch refresh tokens don't expire. You can generate this by going through the [
 Finishing the flow will present you with a refresh token to save in your environment/config. 
 
 ## Streamlabs Credentials
-Just like with Twitch, you'll have to [create an application in Streamlabs' developer console](https://dev.streamlabs.com/docs/register-your-application). Then you can get your access token either by going through [the auth flow yourself](https://dev.streamlabs.com/docs/obtain-an-access_token) or by inserting your credentials & firing the built-in express server with `node web` like above, then <a href="https://localhost:3000/auth/streamlabs">logging in</a> with the given endpoint: https://localhost:3000/auth/streamlabs 
+Just like with Twitch, you'll have to [create an application in Streamlabs' developer console](https://dev.streamlabs.com/docs/register-your-application). Then you can get your access token either by going through [the auth flow yourself](https://dev.streamlabs.com/docs/obtain-an-access_token) or by inserting your credentials (grep "FILL-ME-IN") & firing the built-in express server with `node web` like above, then <a href="https://localhost:3000/auth/streamlabs">logging in</a> with the given endpoint: https://localhost:3000/auth/streamlabs 
 
 Finishing the flow will present you with an access token to save in your environment/config.
 
@@ -44,3 +44,6 @@ Finishing the flow will present you with an access token to save in your environ
 - [ ] Welcome on follow
 - [ ] Add support for saving/repeating drag names
 - [ ] Set/share discord link
+- [ ] Add interface to CRUD gif listing
+
+Questions? Comments? Suggestions? Feel free to create issues. I've done my best to document myself but I offer no guarentees as this is a fun side-project!

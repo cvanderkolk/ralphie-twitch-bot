@@ -89,8 +89,7 @@ async function main() {
 
 
     const listener = await pubSubClient.onRedemption(userId, redemption => {
-        const { rewardName, id, message, rewardId, rewardPrompt, userId, displayName, userName } = redemption;
-        console.log(`-------\n${rewardName}: ${id}\nMessage: ${message}\nPrompt: ${rewardPrompt}\nReward Id: ${rewardId}\nUserId: ${userId}\ndisplayname: ${displayName}\nusername: ${userName}\n-----\n\n`);
+        const { rewardName } = redemption;
         if (rewardName in soundClipMap) {
             console.log('triggering an alert with streamlabs');
             sendStreamlabsAlert(rewardName);

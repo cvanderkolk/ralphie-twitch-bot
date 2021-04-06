@@ -73,10 +73,12 @@ app.get('/auth/twitch', (req, res) => {
 
 
 // streamlabs client config
+const streamlabsClientId = 'FILL-ME-OUT';
+const streamlabsClientSecret = 'FILL-ME-OUT-TOO';
 const streamlabsOauthConfig = {
   client: {
-    id: config.get('Twitch.clientId'),
-    secret: config.get('Twitch.clientSecret')
+    id: streamlabsClientId,
+    secret: streamlabsClientSecret
   },
   auth: {
     tokenHost: 'https://streamlabs.com/api/v1.0/',
@@ -105,8 +107,8 @@ app.get('/auth/streamlabs/callback', async (req, res) => {
 
   const options = {
     code,
-    client_id: config.get('Streamlabs.clientId'),
-    client_secret: config.get('Streamlabs.clientSecret'),
+    client_id: streamlabsClientId,
+    client_secret: streamlabsClientSecret,
     redirect_uri: streamlabsCallbackUrl,
   };
 
