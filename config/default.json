@@ -1,0 +1,10 @@
+{
+    "Twitch": {
+        "clientId": "",
+        "clientSecret": "",
+        "accessToken": ""
+    },
+    "Streamlabs": {
+        "accessToken": ""
+    }
+}
