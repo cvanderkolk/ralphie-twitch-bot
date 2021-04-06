@@ -55,7 +55,7 @@ app.get('/auth/twitch/callback', async (req, res) => {
     // write tokens to file
     await fs.writeFile('./tokens.json', JSON.stringify(tokens, null, 4), 'UTF-8')
 
-    return res.status(200).send('Wrote your Twitch tokens to tokens.json');
+    return res.status(200).send('Wrote your Twitch tokens to tokens.json.');
   } catch (error) {
     console.error('Access Token Error', error.message);
     return res.status(500).send('Twitch auth failed');
