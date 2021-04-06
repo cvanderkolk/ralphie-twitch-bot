@@ -14,8 +14,12 @@
   "dependencies": {
     "config": "^3.3.4",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "form-data": "^3.0.1",
     "node-fetch": "^2.6.1",
+    "openid-client": "^4.6.0",
+    "simple-oauth2": "^4.2.0",
     "twitch": "^4.5.0",
     "twitch-auth": "^4.5.0",
     "twitch-chat-client": "^4.5.0",
