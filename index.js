@@ -51,7 +51,6 @@ const soundClipMap = {
 
 async function sendStreamlabsAlert(rewardName) {
     const url = 'https://www.streamlabs.com/api/v1.0/alerts';
-
     const formdata = FormData();
     formdata.append("access_token", config.get('Streamlabs.accessToken'));
     formdata.append("type", "donation");
@@ -103,10 +102,23 @@ async function main() {
 
     const giveawayUsers = new Set();
     const giveawayCodeMap = {
-        'eshop10': '$10 Digital Gift Card to the Nintendo eShop'
-    }
+        'eshop10': '$10 Digital Gift Card to the Nintendo eShop',
+        'eshop20': '$20 Digital Gift Card to the Nintendo eShop',
+    };
+
+    const discordLink = 'https://discord.gg/bhn29Tx6';
+    const friendCode = 'SW-6387-2884-3980';
+    let dodoCode = '';
 
     chatClient.onMessage((channel, user, message, msg) => {
+        if (message.startsWith('!dodo set') && (msg.userInfo.isMod || msg.userInfo.isBroadcaster)){
+            const [, , code] = message.split(' ');
+            dodoCode = code;
+        };
+        if (message === '!dodo') chatClient.say(channel, `Dodo code: ${dodoCode}`);
+        if (message === '!discord') chatClient.say(channel, `Discord link:\n(~˘▾˘)~ ${discordLink}`);
+        if (message === '!fc') chatClient.say(channel, `Animal Crossing friend code:\n(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ✧ﾟ･: ${friendCode}`);
+
         if (message.includes('!gifboard') && (msg.userInfo.isMod || msg.userInfo.isBroadcaster)) {
             try {
                 const gifName = message.split('!gifboard ')[1];
