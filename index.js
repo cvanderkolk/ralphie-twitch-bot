@@ -47,6 +47,14 @@ const soundClipMap = {
         soundUrl: 'https://gdurl.com/r6RI/download',
         imageUrl: 'https://thumbs.gfycat.com/DampSimilarFrog-size_restricted.gif',
     },
+    'Bastard People': {
+        imageUrl: 'https://i.makeagif.com/media/9-13-2017/wH15a2.gif',
+        soundUrl: 'https://gdurl.com/23Cq/download',
+    },
+    'Hey Queen': {
+        imageUrl: 'https://media.tenor.com/images/f5bd171d6fba0fe1f7cba84f13b2dd52/tenor.gif',
+        soundUrl: 'https://gdurl.com/Bw15/download',
+    },
 };
 
 async function sendStreamlabsAlert(rewardName) {
@@ -106,7 +114,7 @@ async function main() {
         'eshop20': '$20 Digital Gift Card to the Nintendo eShop',
     };
 
-    const discordLink = 'https://discord.gg/bhn29Tx6';
+    const discordLink = 'https://discord.gg/pe9gurxUDB';
     const friendCode = 'SW-6387-2884-3980';
     let dodoCode = '';
 
