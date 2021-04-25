@@ -55,6 +55,10 @@ const soundClipMap = {
         imageUrl: 'https://media.tenor.com/images/f5bd171d6fba0fe1f7cba84f13b2dd52/tenor.gif',
         soundUrl: 'https://gdurl.com/Bw15/download',
     },
+    'Wha Happen': {
+        imageUrl: 'https://media4.giphy.com/media/l2JIk0sWj9sUvbvCU/giphy.gif',
+        soundUrl: 'https://gdurl.com/Xc5g/download',
+    },
 };
 
 async function sendStreamlabsAlert(rewardName) {
