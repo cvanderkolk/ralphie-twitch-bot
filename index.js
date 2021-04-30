@@ -61,15 +61,15 @@ const soundClipMap = {
     },
 };
 
-async function sendStreamlabsAlert(rewardName) {
+async function sendStreamlabsAlert(imageUrl, soundUrl, message) {
     const url = 'https://www.streamlabs.com/api/v1.0/alerts';
     const formdata = FormData();
     formdata.append("access_token", config.get('Streamlabs.accessToken'));
     formdata.append("type", "donation");
-    formdata.append("image_href", soundClipMap[rewardName].imageUrl);
-    formdata.append("message", rewardName);
+    formdata.append("image_href", imageUrl);
+    formdata.append("message", message);
     formdata.append("duration", "5000");
-    formdata.append("sound_href", soundClipMap[rewardName].soundUrl);
+    formdata.append("sound_href", soundUrl);
 
     const response = await fetch(url, { method: 'POST', body: formdata });
     console.log(await response.json());
@@ -104,7 +104,8 @@ async function main() {
         const { rewardName } = redemption;
         if (rewardName in soundClipMap) {
             console.log('triggering an alert with streamlabs');
-            sendStreamlabsAlert(rewardName);
+            const { imageUrl, soundUrl } = soundClipMap[rewardName];
+            sendStreamlabsAlert(imageUrl, soundUrl, rewardName);
         };
     });
 
@@ -118,45 +119,59 @@ async function main() {
         'eshop20': '$20 Digital Gift Card to the Nintendo eShop',
     };
 
-    const discordLink = 'https://discord.gg/pe9gurxUDB';
+    const discordLink = 'https://discord.gg/FhY3Zwr5';
     const friendCode = 'SW-6387-2884-3980';
     let dodoCode = '';
 
     chatClient.onMessage((channel, user, message, msg) => {
-        if (message.startsWith('!dodo set') && (msg.userInfo.isMod || msg.userInfo.isBroadcaster)){
-            const [, , code] = message.split(' ');
-            dodoCode = code;
-        };
+        // mod/vip/broadcaster commands
+        if (msg.userInfo.isMod || msg.userInfo.isBroadcaster || msg.userInfo.isVip) {
+            if (message.startsWith('!dodo set')) {
+                const [, , code] = message.split(' ');
+                dodoCode = code;
+            };
+
+            if (message.startsWith('!gifboard')) {
+                try {
+                    const gifName = message.split('!gifboard ')[1];
+                    if (gifName in soundClipMap) {
+                        const { imageUrl, soundUrl } = soundClipMap[gifName];
+                        sendStreamlabsAlert(imageUrl, soundUrl, gifName);
+                    }
+                }
+                catch (e) {
+                    console.log(`Error when manually triggering gifboard:\n${e}`);
+                }
+            };
+        }
+
+        // just mods & broadcaster
+        if (msg.userInfo.isMod || msg.userInfo.isBroadcaster) {
+            if (message.includes('!giveaway start') && msg.userInfo.isMod) {
+                const giveawayName = message.split(' ')[2];
+                chatClient.say(channel, `We are starting a giveaway for a ${giveawayCodeMap[giveawayName]}. To enter, type !luvralphie in chat.`)
+            }
+            if (message === '!giveaway stop' && msg.userInfo.isMod) {
+                // pick a random user from the giveaways
+                console.log(`This is what the set looks like: ${giveawayUsers}`)
+                const randomUser = getRandomItem(giveawayUsers);
+                chatClient.say(channel, `${randomUser} won the giveaway!!! Give them some snaps. Whisper ${user} to redeem your prize.`);
+                giveawayUsers.clear();
+            };
+        }
+
+        // everyone else
         if (message === '!dodo') chatClient.say(channel, `Dodo code: ${dodoCode}`);
         if (message === '!discord') chatClient.say(channel, `Discord link:\n(~˘▾˘)~ ${discordLink}`);
         if (message === '!fc') chatClient.say(channel, `Animal Crossing friend code:\n(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ✧ﾟ･: ${friendCode}`);
-
-        if (message.includes('!gifboard') && (msg.userInfo.isMod || msg.userInfo.isBroadcaster)) {
-            try {
-                const gifName = message.split('!gifboard ')[1];
-                if (gifName in soundClipMap) {
-                    sendStreamlabsAlert(gifName);
-                }
-            }
-            catch (e) {
-                console.log(`Error when manually triggering gifboard:\n${e}`);
-            }
-        };
         if (message.includes('!luvralphie') && !msg.userInfo.isMod) {
             console.log(`Added ${user} to giveaway`)
             giveawayUsers.add(user);
         };
-        if (message.includes('!giveaway start') && msg.userInfo.isMod) {
-            const giveawayName = message.split(' ')[2];
-            chatClient.say(channel, `We are starting a giveaway for a ${giveawayCodeMap[giveawayName]}. To enter, type !luvralphie in chat.`)
-        }
-        if (message === '!giveaway stop' && msg.userInfo.isMod) {
-            // pick a random user from the giveaways
-            console.log(`This is what the set looks like: ${giveawayUsers}`)
-            const randomUser = getRandomItem(giveawayUsers);
-            chatClient.say(channel, `${randomUser} won the giveaway!!! Give them some snaps. Whisper ${user} to redeem your prize.`);
-            giveawayUsers.clear();
-        };
+
+        // !mp
+
+
     });
 }
 
