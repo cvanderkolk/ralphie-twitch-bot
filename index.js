@@ -167,7 +167,7 @@ async function main() {
                 chatClient.say(channel, `${randomUser} won the giveaway!!! Give them some snaps. Whisper ${user} to redeem your prize.`);
                 giveawayUsers.clear();
             };
-            if (message === '!so') {
+            if (message.startsWith('!so')) {
                 const streamer = message.split(' ')[1];
                 const response = `Please go follow ${streamer} on Twitch at: https://www.twitch.tv/${streamer} because they are an icon, a legend, and they are the moment`;
                 chatClient.say(channel, response);
