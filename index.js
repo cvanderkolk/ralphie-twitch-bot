@@ -21,6 +21,10 @@ function getRandomItem(set) {
 }
 
 const soundClipMap = {
+    'Gross': {
+        soundUrl: 'jesus gross.mp3',
+        imageUrl: 'https://i.makeagif.com/media/2-06-2018/-fzdXc.gif',
+    },
     'Get Her Off Of Me': {
         soundUrl: 'get her off of me.mp3',
         imageUrl: 'https://i.pinimg.com/originals/77/c0/02/77c0028b38b7aa20391672260371d912.gif',
@@ -137,8 +141,9 @@ async function main() {
                 try {
                     const gifName = message.split('!gifboard ')[1];
                     if (gifName in soundClipMap) {
-                        const { imageUrl, soundUrl } = soundClipMap[gifName];
-                        sendStreamlabsAlert(imageUrl, soundUrl, gifName);
+                        const { imageUrl, soundUrl, ...text } = soundClipMap[gifName];
+                        const alertText = text ? text.join(' ') : gifName;
+                        sendStreamlabsAlert(imageUrl, soundUrl, alertText);
                     }
                 }
                 catch (e) {
