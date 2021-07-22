@@ -123,6 +123,9 @@ app.get('/auth/streamlabs/callback', async (req, res) => {
   }
 })
 
+// serve static audio files
+app.use(express.static('audio'))
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
