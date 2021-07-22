@@ -148,6 +148,7 @@ async function main() {
         // just mods & broadcaster
         if (msg.userInfo.isMod || msg.userInfo.isBroadcaster) {
             if (message.includes('!giveaway start') && msg.userInfo.isMod) {
+                giveawayUsers.clear();
                 const giveawayName = message.split(' ')[2];
                 chatClient.say(channel, `We are starting a giveaway for a ${giveawayCodeMap[giveawayName]}. To enter, type !luvralphie in chat.`)
             }
