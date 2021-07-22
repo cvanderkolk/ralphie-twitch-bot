@@ -141,8 +141,9 @@ async function main() {
                 try {
                     const gifName = message.split('!gifboard ')[1];
                     if (gifName in soundClipMap) {
-                        const { imageUrl, soundUrl, ...text } = soundClipMap[gifName];
-                        const alertText = text ? text.join(' ') : gifName;
+                        const { imageUrl, soundUrl } = soundClipMap[gifName];
+                        const text = message.split(gifName)[1];
+                        const alertText = text || gifName;
                         sendStreamlabsAlert(imageUrl, soundUrl, alertText);
                     }
                 }
