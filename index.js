@@ -168,7 +168,9 @@ async function main() {
                 giveawayUsers.clear();
             };
             if (message === '!so') {
-                // go check out this person
+                const streamer = message.split(' ')[1];
+                const response = `Please go follow ${streamer} on Twitch at: https://www.twitch.tv/${streamer} because they are an icon, a legend, and they are the moment`;
+                chatClient.say(channel, response);
             };
         }
 
