@@ -65,6 +65,10 @@ const soundClipMap = {
         imageUrl: 'https://media4.giphy.com/media/l2JIk0sWj9sUvbvCU/giphy.gif',
         soundUrl: 'wha happen.mp3',
     },
+    'Death To All Of Them': {
+        imageUrl: 'https://c.tenor.com/pxIZc0mPDOYAAAAC/wendy-williams-death-to-all-of-them.gif',
+        soundUrl: 'death.mp3',
+    }
 };
 
 async function sendStreamlabsAlert(imageUrl, soundUrl, message) {
