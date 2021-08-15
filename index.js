@@ -1,4 +1,3 @@
-// import { promises as fs } from 'fs';
 const fs = require('fs').promises;
 
 const config = require('config');
@@ -68,7 +67,11 @@ const soundClipMap = {
     'Death To All Of Them': {
         imageUrl: 'https://c.tenor.com/pxIZc0mPDOYAAAAC/wendy-williams-death-to-all-of-them.gif',
         soundUrl: 'death.mp3',
-    }
+    },
+    'Tot Pot': {
+        imageUrl: 'https://media.giphy.com/media/Qp4vPZ4JC8Klj76SsZ/giphy.gif',
+        soundUrl: 'tot pot.mp3',
+    },
 };
 
 async function sendStreamlabsAlert(imageUrl, soundUrl, message) {
@@ -129,7 +132,7 @@ async function main() {
         'eshop20': '$20 Digital Gift Card to the Nintendo eShop',
     };
 
-    const discordLink = 'https://discord.gg/FhY3Zwr5';
+    const discordLink = 'https://discord.gg/4MKBkVHwKY';
     const friendCode = 'SW-6387-2884-3980';
     let dodoCode = '';
 
