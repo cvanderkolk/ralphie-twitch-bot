@@ -72,6 +72,10 @@ const soundClipMap = {
         imageUrl: 'https://media.giphy.com/media/Qp4vPZ4JC8Klj76SsZ/giphy.gif',
         soundUrl: 'tot pot.mp3',
     },
+    'Oh My God': {
+        imageUrl: 'https://64.media.tumblr.com/fea688500b28f16fd02791a19916cfb9/c10ba6d27031665e-65/s540x810/9bd638716292d36df186bc9cf139e8ac4c43e2fc.gif',
+        soundUrl: 'oh my god.mp3'
+    }
 };
 
 async function sendStreamlabsAlert(imageUrl, soundUrl, message) {
