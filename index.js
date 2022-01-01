@@ -187,7 +187,7 @@ async function main() {
 
         // everyone else
         if (message === '!dodo') chatClient.say(channel, `Dodo code: ${dodoCode}`);
-        if (message === '!discord') chatClient.say(channel, `Discord link:\n(~˘▾˘)~ ${discordLink}`);
+        // if (message === '!discord') chatClient.say(channel, `Discord link:\n(~˘▾˘)~ ${discordLink}`);
         if (message === '!fc') chatClient.say(channel, `Friend code:\n(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ✧ﾟ･: ${friendCode}`);
         if (message.includes('!luvralphie') && !msg.userInfo.isMod) {
             console.log(`Added ${user} to giveaway`)
