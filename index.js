@@ -136,7 +136,7 @@ async function main() {
         'eshop20': '$20 Digital Gift Card to the Nintendo eShop',
     };
 
-    const discordLink = 'https://discord.gg/4MKBkVHwKY';
+    const discordLink = 'https://discord.gg/pe9gurxUDB';
     const friendCode = 'SW-6387-2884-3980';
     let dodoCode = '';
 
@@ -179,7 +179,8 @@ async function main() {
                 giveawayUsers.clear();
             };
             if (message.startsWith('!so')) {
-                const streamer = message.split(' ')[1];
+                let streamer = message.split(' ')[1];
+                while (streamer.charAt(0) === '@') streamer = streamer.substring(1);
                 const response = `Please go follow ${streamer} on Twitch at: https://www.twitch.tv/${streamer} because they are an icon, a legend, and they are the moment`;
                 chatClient.say(channel, response);
             };
@@ -187,16 +188,13 @@ async function main() {
 
         // everyone else
         if (message === '!dodo') chatClient.say(channel, `Dodo code: ${dodoCode}`);
-        // if (message === '!discord') chatClient.say(channel, `Discord link:\n(~˘▾˘)~ ${discordLink}`);
+        if (message === '!discord') chatClient.say(channel, `Discord link:\n(~˘▾˘)~ ${discordLink}`);
         if (message === '!fc') chatClient.say(channel, `Friend code:\n(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ✧ﾟ･: ${friendCode}`);
         if (message.includes('!luvralphie') && !msg.userInfo.isMod) {
             console.log(`Added ${user} to giveaway`)
             giveawayUsers.add(user);
         };
-
         // !mp
-
-
     });
 }
 
