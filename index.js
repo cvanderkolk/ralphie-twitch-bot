@@ -74,7 +74,11 @@ const soundClipMap = {
     },
     'Oh My God': {
         imageUrl: 'https://64.media.tumblr.com/fea688500b28f16fd02791a19916cfb9/c10ba6d27031665e-65/s540x810/9bd638716292d36df186bc9cf139e8ac4c43e2fc.gif',
-        soundUrl: 'oh my god.mp3'
+        soundUrl: 'oh my god.mp3',
+    },
+    'Not That Much Cheese': {
+        imageUrl: 'https://c.tenor.com/lWjOmSoodGsAAAAC/jarem-30rock.gif',
+        soundUrl: 'cheese.mp3',
     }
 };
 
