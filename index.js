@@ -79,7 +79,11 @@ const soundClipMap = {
     'Not That Much Cheese': {
         imageUrl: 'https://c.tenor.com/lWjOmSoodGsAAAAC/jarem-30rock.gif',
         soundUrl: 'cheese.mp3',
-    }
+    },
+    'Dealbreaker': {
+        imageUrl: 'https://media0.giphy.com/media/KJDQZRWyYbpuM/giphy.gif',
+        soundUrl: 'dealbreaker.mp3',
+    },
 };
 
 async function sendStreamlabsAlert(imageUrl, soundUrl, message) {
