@@ -84,6 +84,10 @@ const soundClipMap = {
         imageUrl: 'https://media0.giphy.com/media/KJDQZRWyYbpuM/giphy.gif',
         soundUrl: 'dealbreaker.mp3',
     },
+    'Small Fire': {
+        imageUrl: 'https://i.gifer.com/SOwc.gif',
+        soundUrl: 'small fire.mp3',
+    }
 };
 
 async function sendStreamlabsAlert(imageUrl, soundUrl, message) {
