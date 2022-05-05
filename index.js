@@ -1,4 +1,3 @@
-// import { promises as fs } from 'fs';
 const fs = require('fs').promises;
 
 const config = require('config');
@@ -65,6 +64,30 @@ const soundClipMap = {
         imageUrl: 'https://media4.giphy.com/media/l2JIk0sWj9sUvbvCU/giphy.gif',
         soundUrl: 'wha happen.mp3',
     },
+    'Death To All Of Them': {
+        imageUrl: 'https://c.tenor.com/pxIZc0mPDOYAAAAC/wendy-williams-death-to-all-of-them.gif',
+        soundUrl: 'death.mp3',
+    },
+    'Tot Pot': {
+        imageUrl: 'https://media.giphy.com/media/Qp4vPZ4JC8Klj76SsZ/giphy.gif',
+        soundUrl: 'tot pot.mp3',
+    },
+    'Oh My God': {
+        imageUrl: 'https://64.media.tumblr.com/fea688500b28f16fd02791a19916cfb9/c10ba6d27031665e-65/s540x810/9bd638716292d36df186bc9cf139e8ac4c43e2fc.gif',
+        soundUrl: 'oh my god.mp3',
+    },
+    'Not That Much Cheese': {
+        imageUrl: 'https://c.tenor.com/lWjOmSoodGsAAAAC/jarem-30rock.gif',
+        soundUrl: 'cheese.mp3',
+    },
+    'Dealbreaker': {
+        imageUrl: 'https://media0.giphy.com/media/KJDQZRWyYbpuM/giphy.gif',
+        soundUrl: 'dealbreaker.mp3',
+    },
+    'Small Fire': {
+        imageUrl: 'https://i.gifer.com/SOwc.gif',
+        soundUrl: 'small fire.mp3',
+    }
 };
 
 async function sendStreamlabsAlert(imageUrl, soundUrl, message) {
@@ -125,7 +148,7 @@ async function main() {
         'eshop20': '$20 Digital Gift Card to the Nintendo eShop',
     };
 
-    const discordLink = 'https://discord.gg/FhY3Zwr5';
+    const discordLink = 'https://discord.gg/pe9gurxUDB';
     const friendCode = 'SW-6387-2884-3980';
     let dodoCode = '';
 
@@ -168,7 +191,8 @@ async function main() {
                 giveawayUsers.clear();
             };
             if (message.startsWith('!so')) {
-                const streamer = message.split(' ')[1];
+                let streamer = message.split(' ')[1];
+                while (streamer.charAt(0) === '@') streamer = streamer.substring(1);
                 const response = `Please go follow ${streamer} on Twitch at: https://www.twitch.tv/${streamer} because they are an icon, a legend, and they are the moment`;
                 chatClient.say(channel, response);
             };
@@ -182,10 +206,7 @@ async function main() {
             console.log(`Added ${user} to giveaway`)
             giveawayUsers.add(user);
         };
-
         // !mp
-
-
     });
 }
 
