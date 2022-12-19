@@ -87,6 +87,10 @@ const soundClipMap = {
     'Small Fire': {
         imageUrl: 'https://i.gifer.com/SOwc.gif',
         soundUrl: 'small fire.mp3',
+    },
+    'Oh': {
+        imageUrl: 'https://media.giphy.com/media/2oDCYfGDjjmyFky2U8/giphy.gif',
+        soundUrl: 'hohoho.mp3',
     }
 };
 
